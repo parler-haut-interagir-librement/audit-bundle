@@ -4,6 +4,24 @@ All notable changes to `phil/audit-bundle` will be documented in this file.
 
 Updates should follow the [Keep a CHANGELOG](https://keepachangelog.com/) principles.
 
+## 0.1.1-alpha - 2026-11-24
+
+### Added
+
+- Reads of sensitive data: `Facts::read($what, $subject, $actor, $tenant)` builds the facts of a read, the action
+  `read.` then what was read, always naming the record read; `Facts::READ_PREFIX` and `Facts::isRead()`;
+  `AuditTrail::recordRead()` records one; `AuditQuery::reads()` keeps the reads only. The
+  [reading guide](doc/reading.md#reads-of-sensitive-data) says when to record a read and what volume to expect.
+- The [ASVS 5.0 mapping](doc/asvs.md).
+- Tests of a clock in another time zone, through storage and verification, and of the end of daylight saving time;
+  of facts holding a carriage return, a NUL byte, a terminal escape or another control character, refused when written
+  and not intact when stored.
+
+### Changed
+
+- The development requirements ask for the latest minor of each dependency (`doctrine/orm` 3.8, `doctrine/dbal` 4.6,
+  `symfony/http-client-contracts` 3.8).
+
 ## 0.1.0-alpha - 2026-11-14
 
 ### Added

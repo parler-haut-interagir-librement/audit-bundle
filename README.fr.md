@@ -1,4 +1,4 @@
-<!-- phil-dev source-sha256=c49ac3a7448c13e587b8193d9017ae2b04820c3e7527338303c72d41c05bd9ef -->
+<!-- phil-dev source-sha256=a3f1a1178e4c702328519c00a0f4b52b88513d689775178497c0c9b56cad15f6 -->
 # phil/audit-bundle
 
 **Une piste d'audit en ajout seul qui révèle toute falsification et permet quand même d'effacer les renseignements
@@ -53,7 +53,7 @@ d'adaptateurs : il porte ce que la conception décide, et laisse des ports comme
 | `AuditRow`, `RowKind`, `ChainVerifier`, `ChainBreak`, `Anchor`, `Domain\Contract\AuditRowRepository` | Implémenté et testé |
 | `SiteSegment`; `site_segments`, `phil:audit:verify --tenant` | Implémenté et testé |
 | `DashboardFeed`, `ExportedFact`, `FactExporter`, `FeedCheckpoints`; `JsonLinesFactExporter`, `OtlpLogExporter`, `DbalFeedCheckpoints`, `phil:audit:feed`, `FeedOnRecorded` | Implémenté et testé |
-| `AuditTrail` (événements, discontinuités), `Anchoring`, `TrailVerification` | Implémenté et testé |
+| `AuditTrail` (événements, lectures de données sensibles, discontinuités), `Anchoring`, `TrailVerification` | Implémenté et testé |
 | `DbalAuditRowRepository` et sa table; `phil:audit:anchor`, `phil:audit:verify` | Implémenté et testé |
 | `Facts`, `Subject`; `AuditQuery`, `Cursor`, `AuditPage`; `AuditLog`, `ChainStatus` | Implémenté et testé |
 | `DbalAuditLogReader`, `ScanningAuditLogReader` | Implémenté et testé |
@@ -70,8 +70,8 @@ d'adaptateurs : il porte ce que la conception décide, et laisse des ports comme
 - [Configuration](doc/fr/configuration.md) : les clés sous `phil_audit` (`connection`, `serializer`, `anchor_writer`,
   `anchor_reader`, `anchor_file`, `dispatch_bus`, `workflow_segment`, `site_segments`, `feed`), les services câblés,
   et la façon d'enregistrer vos propres adaptateurs.
-- [Lire le journal](doc/fr/reading.md) : les faits qui indexent une ligne, `AuditQuery`, les pages et les curseurs,
-  `AuditLog`, l'historique d'un enregistrement, `ChainStatus` et les deux lecteurs.
+- [Lire le journal](doc/fr/reading.md) : les faits qui indexent une ligne, les lectures de données sensibles, `AuditQuery`, les
+  pages et les curseurs, `AuditLog`, l'historique d'un enregistrement, `ChainStatus` et les deux lecteurs.
 - [Intégrations](doc/fr/integrations.md) : les changements d'état de Symfony Workflow, le compte courant du composant
   Security, le locataire de `phil/tenancy-bundle`, et l'envoi aux tableaux de bord avec Messenger.
 - [Une chaîne par site](doc/fr/sites.md) : les segments de site, ce que la vérification ajoute, ce qu'un locataire
@@ -90,6 +90,8 @@ d'adaptateurs : il porte ce que la conception décide, et laisse des ports comme
 - [Points d'extension](doc/fr/extension-points.md) : chaque port méthode par méthode, les invariants d'un
   adaptateur, un registre de sérialiseurs, un auteur d'ancres sur verrouillage d'objets et un lecteur de charge
   utile.
+- [Correspondance avec ASVS 5.0](doc/fr/asvs.md) : les exigences du chapitre V16 que le bundle satisfait, les tests qui
+  les démontrent et celles qui reviennent à l'application.
 - [Tests](doc/fr/testing.md) : comment le bundle est testé, ses bancs d'essai et ses cibles de fuzzing, l'exécution de
   ses tests dans un monodépôt ou seul, des vecteurs de référence pour un sérialiseur et des tests de refus pour une
   destination d'ancres.
